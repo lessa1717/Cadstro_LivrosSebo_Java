@@ -14,26 +14,30 @@ public class Main {
 
             switch (opcao) {
                 case "1":
+                    String opcaoCadastro;
                     do {
                         System.out.println("Escolha uma opção:\n1 - Cadastrar Livro\n2 - Listar\n0 - Sair");
-                        opcao = leitor.nextLine();
+                        opcaoCadastro = leitor.nextLine();
 
-                        if (opcao.equals("1")) {
+                        if (opcaoCadastro.equals("1")) {
                             System.out.print("Quantos livros deseja cadastrar? ");
                             int quantidade = leitor.nextInt();
                             leitor.nextLine();
 
                             for (int i = 0; i < quantidade; i++) {
                                 System.out.println("Cadastro do Livro " + (i + 1));
-                                sebo.cadastrarLivro(new Livro());
+                                sebo.cadastrarLivro();
                             }
+                        } else if (opcaoCadastro.equals("2")) {
+                            System.out.println("Catálogo de livros do sebo:");
+                            sebo.listarLivros();
                         }
-                    } while (!opcao.equals("0"));
+                    } while (!opcaoCadastro.equals("0"));
                     break;
 
                 case "2":
                     System.out.println("Catálogo de livros do sebo:");
-                    sebo.listarLivros(); // Chame o método de listagem
+                    sebo.listarLivros();
                     break;
             }
         } while (!opcao.equals("0"));

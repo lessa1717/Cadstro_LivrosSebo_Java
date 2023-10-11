@@ -33,20 +33,21 @@ public class Sebo {
             leitor.nextLine(); // Consumir a quebra de linha
 
             if (anoLancamento + 5 > 2023) {
-                System.out.println("O livro não pode ser cadastrado,\npois tem menos de 5 anos de lançamento.\nPor favor revise o ano!");
+                System.out.println("O livro não pode ser cadastrado,\npois tem menos de 5 anos de lançamento.\nPor favor, revise o ano!");
+            } else {
+                System.out.print("Preço do livro: ");
+                double preco = leitor.nextDouble();
+                leitor.nextLine(); // Consumir a quebra de linha
+
+                Livro novoLivro = new Livro();
+                novoLivro.titulo = titulo;
+                novoLivro.autor = autor;
+                novoLivro.anoLancamento = anoLancamento;
+                novoLivro.preco = preco;
+
+                catalogo.add(novoLivro);
+                break; // Mova o break para fora do bloco else
             }
-        } while (anoLancamento + 5 > 2023);
-
-        System.out.print("Preço do livro: ");
-        double preco = leitor.nextDouble();
-        leitor.nextLine(); // Consumir a quebra de linha
-
-        Livro novoLivro = new Livro();
-        novoLivro.titulo = titulo;
-        novoLivro.autor = autor;
-        novoLivro.anoLancamento = anoLancamento;
-        novoLivro.preco = preco;
-
-        catalogo.add(novoLivro);
+        } while (true); // Loop infinito enquanto o ano não for válido
     }
 }
